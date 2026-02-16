@@ -1,3 +1,99 @@
+--// CONFIG
+local SECRET = "KAYQUE_PRIVATE_2026"
+
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+--// GERAR KEY DIÁRIA
+local function generateDailyKey()
+    local date = os.date("*t")
+
+    -- formato: 2026-02-16
+    local today = date.year .. "-" .. date.month .. "-" .. date.day
+
+    local raw = player.UserId .. player.Name .. today .. SECRET
+    local hash = 0
+
+    for i = 1, #raw do
+        hash = (hash + string.byte(raw, i) * (i * 3)) % 999999999
+    end
+
+    return "DAILY-" .. tostring(hash)
+end
+
+local correctKey = generateDailyKey()
+
+--// GUI
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 360, 0, 210)
+frame.Position = UDim2.new(0.5, -180, 0.5, -105)
+frame.BackgroundColor3 = Color3.fromRGB(18,18,18)
+frame.BorderSizePixel = 0
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0,15)
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1,0,0,50)
+title.BackgroundTransparency = 1
+title.Text = "🔐 DAILY KEY SYSTEM"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 20
+title.TextColor3 = Color3.new(1,1,1)
+
+local box = Instance.new("TextBox", frame)
+box.Size = UDim2.new(0.8,0,0,40)
+box.Position = UDim2.new(0.1,0,0.4,0)
+box.PlaceholderText = "Digite a Key do dia..."
+box.TextColor3 = Color3.new(1,1,1)
+box.BackgroundColor3 = Color3.fromRGB(35,35,35)
+box.BorderSizePixel = 0
+Instance.new("UICorner", box).CornerRadius = UDim.new(0,10)
+
+local status = Instance.new("TextLabel", frame)
+status.Size = UDim2.new(1,0,0,30)
+status.Position = UDim2.new(0,0,0.65,0)
+status.BackgroundTransparency = 1
+status.TextColor3 = Color3.new(1,1,1)
+status.Font = Enum.Font.Gotham
+status.TextSize = 14
+
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(0.5,0,0,40)
+button.Position = UDim2.new(0.25,0,0.8,0)
+button.Text = "VERIFICAR"
+button.Font = Enum.Font.GothamBold
+button.TextSize = 16
+button.TextColor3 = Color3.new(1,1,1)
+button.BackgroundColor3 = Color3.fromRGB(0,170,255)
+button.BorderSizePixel = 0
+Instance.new("UICorner", button).CornerRadius = UDim.new(0,10)
+
+--// LIBERAR SCRIPT
+local function unlock()
+    frame:Destroy()
+
+    print("Sistema liberado!")
+
+    -- COLE SEU SCRIPT PRINCIPAL AQUI
+end
+
+--// VERIFICAR
+button.MouseButton1Click:Connect(function()
+    if box.Text == correctKey then
+        status.Text = "Key válida ✅"
+        wait(1)
+        unlock()
+    else
+        status.Text = "Key inválida ❌"
+    end
+end)
+
+-- MOSTRA A KEY NO CONSOLE (SÓ PARA VOCÊ)
+print("KEY DE HOJE:", correctKey)
+
 --// SERVIÇOS
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
