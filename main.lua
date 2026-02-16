@@ -1,107 +1,630 @@
--- [PROTECTED] Advanced Encryption System
--- Multi-layer obfuscation active
--- Reverse engineering will result in corrupted code
 
-local OkFPNd3izhL2EkLy,OT3Vnk1O3UGFN27,lBpAXnI0C5xIhePtJGdHn,IkesDmXAt7lVHNULsNS={},"",string,table
-local oq2zewoWcqdQz8=lBpAXnI0C5xIhePtJGdHn.char;local lJQJXFmK04ItUv_ug5wf=lBpAXnI0C5xIhePtJGdHn.byte
-local _GFhXGB50ydRqlSN79d=lBpAXnI0C5xIhePtJGdHn.sub;local __bbZ0q2XH9Um6ok7Cw=IkesDmXAt7lVHNULsNS.concat
-local __hL_LoUUOPC_J=IkesDmXAt7lVHNULsNS.insert;local ImXTL69Zwj_r3HkCGB9=loadstring or load
-local _GVp99cqkpS2AHI=tonumber;local __4Th23Yawt4IkcKEGCfy0=math.floor
-local omUFiqzeSRBTEHH6gxLBY=bit32 or bit;local _G_05s8x0ueU9h=197
-local _GVYhzCwLEOXgNKT=game:GetService("HttpService")
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Lighting = game:GetService("Lighting")
 
-local OkFPNd3izhL2EkLy_0="A08BB7A99290B1BFF7BFA29695B5B0EAA2B6B09193808BBFB58BAF8EB2F290EEF382F692BC839F92A981BD8FB5938CB5928C94AEB7ACA996979C89F7A0818CF0BFF7A8B7FCABA89FBCEEBDA6FCAFEAB68AA3FCAEA3B68DFDAD82F5848784A2EE9786A9BFF690948F8EA3919DAF90A4AFF594EAAAFC9591B7B7F693AB8A89B0F495EAFDF1A19194EA9D868FA3A3EEF7AF8FBDBF83EEB492EE97A9B1FD88A6A780B2A18281B1FD948B8CBC909FBF9794F396F18E9093AA9D8AB48F8FAD80A0958C81AB9C8FB49280B7";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_0)
-local OkFPNd3izhL2EkLy_1="9CAC91BFBD83B1B3AC87A0B6B4F0A28081A684B5A0B6A1F58792BCB4B18192ADB2EABC89B5B5F7A09DB1A7FD84A789EEF7FDEAEAEA8EB3B0F788F0FDA08BF69387F595FCA8EE83A7B39D82FCA888BDB1EEB1AAFD8F868D93F1B79CF2B694A6A3A28880879191F0B48FEEFD8883BFEEF592F3FCA4BDABB69C8C8382869191AAF191AEAFF180868CF6AF8A96F1FCAEAB8C9484AB9FF18C87F196F596B286FC9493FDA888B6AC95A3F1A49FBDF18882AA8D88908D8780A9B687A3A8B29CBFAF89868A84848E828C9781";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_1)
-local OkFPNd3izhL2EkLy_2="B787A88A889FAE82BFA2F1FC87A98F8E96ABB08B8CB5A28797B7AB9389B7F0838DADA883909DEAAFEEA4F29CA1ACF1B6A8F69C90B296A4908FA8A4AFA38389F7A4AFABA0FCBD96F4828DAFA79FB2BF9688B6EEA0B1A6BC92F79DF29F90A886B3B2FCA2AF9DADAFAEAA93A78D9582F5EA87BF97FCA0A49DACA0F7ADF0B3F1F2868F8D81F2AA97FC829FFD818D9DF3BD938382F0ABF1F4F1818FA880A3A1978EBD9189F0B689A4EAF3B2B0F38D909C84AFB2F09189A4F4B5FDA48C9FA689F1A991F6A18F93B181B396";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_2)
-local OkFPNd3izhL2EkLy_3="82B694AFA3B1AE90A6EAB2A1A8A484F2F28C88F0828E8FB6ACF29F8F899D8DA080AA87B693A3888C87A3828AF3B7B1FD84B59FF786B484BCF1A4B197F19FF78284ACABA4AD88FD83A3FD9380AAF0819F9C97A2AE92EA9FB0AF908ABC94A1B1A0F389B08EA88391A3FCB38BF5918990A3B6F1EAAC81B7F6B2B0F5AA89B281ADF687F6ACB5A684A7B7B5919787ACB1ABAF86A6BD90F4B7A8B5848DF7F5BD87B3948280A38689848BB3F29782B68CEAF5A7EA82948CAB86818EA2A68AEEA6FC9CBDF7A4A0B5BCB4A2BD";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_3)
-local OkFPNd3izhL2EkLy_4="B4B186AA9F8FFDF381B28A8A8AB3FCF38EA1F6B78490A3A0F3B4ABA4B0A2AEAD9C948482F0B5ADF384F3A09C92A28AEA88818AA2888BBFB1A682A495F28DF0F69FA2AF8E9C94B386EE9DA287B5F3EA91BC90A8B78892828EB4AB8B88979F81B2BF8D8AF0B48A8B8BBFBFAE8AA891F393A0BDF5A888A09F92A7B3A1FCA7F6A9EAF594EE818486FC8F9CF0908096F7B78297A988F2FD939F8EB58DEEABEE88BDF2ABA69FB0F2A096AE8288979FAC81FDF0F19C8DAA9CAA87AF80AA9395938796A89C9FAE97938BFD83";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_4)
-local OkFPNd3izhL2EkLy_5="A3FCA4FC9C87A9828096A7AA81B29C84868CB7B3B790A08CF5B2F5B29DA2AE958687BCF182B3BC81B59097F1ADBD8D9788F1F3A8ABAA84B4ADA6BDBC918389B6EAA8A9ADF3EAF6B5FCA381BFAFF4F5AA8D87A7F3F58DA9FC88878AA0EAB7FC928297BFACF1B7B38CACF5A6B691A28DB2889CBFB08CA784B3A6968D8F81ADAC8896AFF3FD81A3F6B5BFA6A2A08DF4A8869D8DA3A3A387AD84B5B0AFA0FC8CA6B2EAF6A8B78F96A2F1F6AFA89CF5849D83B781AA9F87ABAFF28F80AA8190F2888FF6A8A7A38C868DB1";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_5)
-local OkFPNd3izhL2EkLy_6="9F8BAEA2A4F08B93F1B3B0A28BF0ADA9828E84F29DF3A995F5B6B29C94A497A2AABDFDEAF59F9DB591ABA1BCF7F0F6B580F6B1FD8BA1A0AB88F6B1B6F6F694AB8E91A2809493F384A382908995A8AAFC8FAFF68488A19397908EBDB6F48B91F3B28DF5EAFCF4A2BD8CA283BCF58B9782F1A1AAAD8E868CB4929CB2BDF3AF87B286BF949C88A792BD8DFCF1ADF6FCA98492A3A49CA8BFBD8D88899DB0FCB6F2AFB690A6ACF5AC8391A8BCA78081A68AAA84B58EABA48FEE8AF7A3A3BDB2AFF0BCF5FCA68DA4B689F4";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_6)
-local OkFPNd3izhL2EkLy_7="B3AA8FB2EA9DB0B494978EB0F4BFF3EE97A9F094ABF394BC9D83939FF781F0ABACA4B491B2EEF48F93ACFDF38983B0F48AAF97A18EA384B38E94B6938BAD80F7A3EAF6B583BDB796FC8EB183BFBCAF96F3F7B4B48183A9A7928A90839FAFA9889DA4EEB2EAA7B4B095B6F59CA4ACB3909FF68E8DB1A286B189FCA2A9AAA8B5B7ABB5F697B79DAB92A4A4A8F1A393B381A1B49FFC9FB0A784ADBFA0A8F6918D9F97EE92F3FC9289B3AFB59D92F681B093BC9CEEBCAEFD919DA8B0A8F08B87958BB2B3A1A982BCF4B6";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_7)
-local OkFPNd3izhL2EkLy_8="ADBD83BC80AF908AB1B1A2BCA4A2B0A28381AFA39495A89487B78EF7F49783BFB2AB808E80F48CBDF0FD9689AA9DEEA2BD95BCFDAB8480B6F189AAFD968EB5B7A490ABF3839C9191F2FD8081AEA1EAF4B39D92B2BD9FA9AF93B586B695B3BD8DA6BD9FABB3B690978994B38EB78692869C81B2ACA384F4A8F6928A91A9ADB0AD8BA09686B1A6ABA0928E89A8B7BFBDB4B2F5A78784BDB2B2BCF58AFD828B88BD96F5888194819F92F683BFB69C91809795A7BD8294A7A884FDBCACB1B4908097BDFCF1B69297B388";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_8)
-local OkFPNd3izhL2EkLy_9="ABF6A7A2818AAB8EA6F395929580BC9282F4F2A68693F4839396A393AD8480B0908FB29091A4AD8B8D91B5F6ADAF948AF282FC94B6889FB0939CF49FF4A2F2A88C879DB4B6928289F0B796ACA1B3B288BCA7AAB28EBD849380EEF693A287B18FF4F4A8BDEEF6B3B69783A995F082F18EF7FC879790848CA0938793F1A4889D8EF28CB3F4AAB5B5AEFDBC849489A8F5A2FC9786A9A890FC94A49FA3F5F5FDBF91828DACF495FCB2BDEEAAAB9C93B0B08BF09C87A6A78FA482B5F3B6938F83B3FC8EBFF3A9FCA4A48C";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_9)
-local OkFPNd3izhL2EkLy_10="A083B38BEE89A78CEE8F9C87A8ABA8B7A492B2B78BA69DF4A992ACADAF86B59FF1F0AFAFF7B5B38A95EAFCB7F387BDF09CB0908FAD86AA818D8D818AF0A8AA80AA848AAE8EEA868082EAA4F7B58080968DA2AF8E97B6A28CAAB0ACEE9CBD9386A3A38D84889F9283B2BCB397F1A4A49C8CBDB7FDA9B6AEEEAEB09384ADAEFC97A1A1A9A1809694BCEEF0AEF38684959082B59FA9F387A3F3A18194BC878382A888B7A9B7EEBD88A49FF3AB8B9FB784A88CA3A89CF0B590A08A9DB5F5BD8F9FAE9FF396B4B1A2FC86";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_10)
-local OkFPNd3izhL2EkLy_11="90A98DBF90F291A2A7F0918CBF83B195FCA9AB86B68EB2BC86BFB0F4BDB39182A28FF184ABA886B6AB8F868EEAA4F592B2A1BC8BBCB1ACF6EAA0B2A2949397AEF5B593EEF38FF4B2F7A3A3B5AAB4B1B5ADBD9F92BFA39D83ACFCB6B3F0B7A283B6AEACADADAAB7A6829193EEEEEAA9B3EAF793A9B7F6F4AF9DFCB3AFB4928A9C87B0B68381A78B90958B8A91F4A8AAF796BD89EEFD97FDB09C91F3FDAAA0BCF5A1BCBDBDF5F1B490A9F59783EAA9FCEAEEAFA1AFF2FDF3B0B0B28BF2A6B192A988A8AF8D92A1A4A2";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_11)
-local OkFPNd3izhL2EkLy_12="F5EE828B94B59583888DF7F5A880BDF388FC9F8BA3B49DA39180A391A690A8F4B3EAFC96A2918988B2958AB7AD8988A98BAEF4F094828EA491A9ABF39F92FDFDB493A7F5AAA7878B8DA4F6A6A3B38C86B3F2B5F4A986A8F0F781A192ADB484FCAB9288FC93B0A9FC92F4B4ADB2F392B4B1A1A2A3AF93F5F3B7A6868BA1A982F188BDEE94ABF7878CACB3AA8AA0938DA68E89A7A991A1F58BB5A4BDF6A98C88A080B69CAEA4AAB790F4F096EEF0B4ADF2B18EB786ABBDF3EEF5ABA2B4EAF6848AA8B2F7B3B5F2A381";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_12)
-local OkFPNd3izhL2EkLy_13="A891F1A681A0F6F0F48B83B3A792A397B1A7FDF1B5F593F182BFF2A2F192AA8386B6A0A28E819D9387EA88ADB6F080B287F2F5B09CABF5BCAD959782AEF4AE8E958AA3ADB2AAF3F281A48B89B1A882FDF7EE868CFCA9B6A28C97F6B0EE9282F1F0A78FBFF1F7BDA7EEEA918EAFBCA997A29D86969C8CA4A0F1A2B58EBFF5EEACACB08087F6B58D8BA1819DBCB68AFD8E88B3A3AA87EE908A90B1A980A3B6A4A888F6B7A3F4F0EAA0BF81EAEAF092A797F4A78CF28BF7B6828C87B2F0878AFCF7A0EEB392A6A8BF8A";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_13)
-local OkFPNd3izhL2EkLy_14="8DF38CAFABA796F1869FA8A38DA3A4819CEEF1B586F6B0EEBDB4BC86A79C97F6A3F7A4B7A28AA383BC84B3A680A0B2F696A0FC86B7B58CB186AE89958393A4888880A8AC9480EEAF8FBFA6A283BDB3B2F6ADB188918BA3A8ADF1FDF1AAB58CB182B6B5B5AE82A7BDADA183928884A0B3A8B2BD868CF78691ADB3A6BC819093A7BC95F2EE87B0F581BD81B6958AB1A4A8BF8AA1868BBD9F92A0A0938CB6F18C9C9FAD83A790F49292A9B38686A2A6A3B78092F18891A9F0B0908691B3AC82AFAB80B480A9A79497AD";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_14)
-local OkFPNd3izhL2EkLy_15="8FA3918888AF8CAA8FB1F2F6F7A8F192ADA2978E8C838EB29CA1A4B6B5958B83A28C95F0B486BCB7BC84B68996A0FCAFB097B393F29F90BC8DF4AC839FB6FDB488809FB081A087A7A48A90F6EA8E86AD8280B1B59CB0F48886F79FF6A19183F3F6B08C8BB0AC86F4F3A487A6FDABB391B0AEA7B7B2868A8FACEA90EA9DB09CB0A6A4B6F6AC92A6FCFD8D95B5B68AABA1F3BFB3F1EAAFF3ABAFA68CB0B4A2A9F3AEA489F1B0F291AB88B7F6A68089AF89BCFC96F692A39397AE91F0B5FDAEBF8BB5B384B2F0F3B5AC";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_15)
-local OkFPNd3izhL2EkLy_16="BC92F08F90B4A4FCF39FF0A4AFB0B0F5A294AFADF5BCAD97F3ADA0B0878C9DB1ADB6979F8CFDEAF6BD91908B9DF4829792B3ACF0B19293F4A6AD878CB0A7F19DF1888F9391F09FB2A6F7879FBFF188A988F3F6B7958F88F2F7F0A1F1F7AFF08D96F4F5B6F2A4B5A29C9DA6ADACB1BC96AA9DB486B2B4F0BDA2908B868EEAB0B7A9F7A9EAA994A086A7FD9FB5A0F6B4B5F6F58F9483AFA487B2B188B6A289B3EE8CBC96B4A4918495A1EEAEF4969CF3A6F691AFBFB2BCBCFDAEFCA390A0F6FC9287BC96839395EEB0";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_16)
-local OkFPNd3izhL2EkLy_17="F6B09CF3888881EEF6FC90838CB1A3EA8697FCADA98FB4A091F792929593FCB0AE8BF6FD9391B59D84939593A0F2A780A4928F9CA4A48BB692F6AB808E9FFC8B80A38991FDF08C82B3A28BBDAE9CA0F294A9978FA1ACF080A9949FB3908E918E9D8789899DA7919DEE9082EAA0B6F6F3AB96F5AC82F7B683F090BF90808F8BA4F18BB2EEF796ADFCBC8CAEB4B6B284B7F6B38FB28E80928E8FB4F48EADBCBC9FF09089A0B5A3F0978DAEB59182B0F491A1A3AD88ACF1B0F3FD83A8B0EEA9948CB4EA928E93939787";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_17)
-local OkFPNd3izhL2EkLy_18="8DF7A2F0B6B68F8E8EA48FA2FD9782F0A2EAADA1939081BD9292AEB6AEA38AB495BCA992938FBCF4AA9FF5B0A79DFDEA9290AFF4A38BF783F4888EA4AD9C8EFCF489B7EAA3F7BCA7A787B2F8";__hL_LoUUOPC_J(OkFPNd3izhL2EkLy,OkFPNd3izhL2EkLy_18)
+local player = Players.LocalPlayer
 
-OT3Vnk1O3UGFN27=__bbZ0q2XH9Um6ok7Cw(OkFPNd3izhL2EkLy)
 
-local function OkFPNd3izhL2EkLy_d1(h)
-    local r=""
-    for i=1,#lBpAXnI0C5xIhePtJGdHn.gsub(h,"..",function(c)
-        r=r..oq2zewoWcqdQz8(_GVp99cqkpS2AHI(c,16))
-    end)do end
-    return r
-end
+-- 🔐 SISTEMA DE KEY (MULTI KEY)
 
-local function OkFPNd3izhL2EkLy_d2(x,k)
-    local o=""
-    for i=1,#x do
-        local b=lJQJXFmK04ItUv_ug5wf(x,i)
-        o=o..oq2zewoWcqdQz8(omUFiqzeSRBTEHH6gxLBY.bxor(b,k))
-    end
-    return o
-end
+local VALID_KEYS = {
+	["dev1090"] = true,
+	["Gutovoador"] = true
+}
 
-local function OkFPNd3izhL2EkLy_d3(b)
-    b=lBpAXnI0C5xIhePtJGdHn.gsub(b,'[^A-Za-z0-9+/=]','')
-    local r=""
-    for i=1,#b,4 do
-        local n=0
-        for j=1,4 do
-            n=n*64+(lBpAXnI0C5xIhePtJGdHn.find('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
-                _GFhXGB50ydRqlSN79d(b,i+j-1,i+j-1) or '=') or 1)-1
-        end
-        r=r..oq2zewoWcqdQz8(__4Th23Yawt4IkcKEGCfy0(n/65536))
-        if _GFhXGB50ydRqlSN79d(b,i+2,i+2)~='=' then
-            r=r..oq2zewoWcqdQz8(__4Th23Yawt4IkcKEGCfy0(n/256)%256)
-        end
-        if _GFhXGB50ydRqlSN79d(b,i+3,i+3)~='=' then
-            r=r..oq2zewoWcqdQz8(n%256)
-        end
-    end
-    return r
-end
+local authenticated = false
 
-local function OkFPNd3izhL2EkLy_d4(c)
-    local d={}
-    for i=0,255 do d[i]=oq2zewoWcqdQz8(i)end
-    local w=oq2zewoWcqdQz8(lJQJXFmK04ItUv_ug5wf(c,1))
-    local r={w}
-    local ds=256
-    for i=2,#c do
-        local k=lJQJXFmK04ItUv_ug5wf(c,i)
-        local e
-        if d[k]then e=d[k]
-        elseif k==ds then e=w.._GFhXGB50ydRqlSN79d(w,1,1)
-        else return nil end
-        __hL_LoUUOPC_J(r,e)
-        d[ds]=w.._GFhXGB50ydRqlSN79d(e,1,1)
-        ds=ds+1;w=e
-    end
-    return __bbZ0q2XH9Um6ok7Cw(r)
-end
+local keyGui = Instance.new("ScreenGui")
+keyGui.ResetOnSpawn = false
+keyGui.Parent = player:WaitForChild("PlayerGui")
 
--- Decodificação em cascata
-local s1=OkFPNd3izhL2EkLy_d1(OT3Vnk1O3UGFN27)
-local s2=OkFPNd3izhL2EkLy_d2(s1,_G_05s8x0ueU9h)
-local s3=OkFPNd3izhL2EkLy_d3(s2)
-local s4=OkFPNd3izhL2EkLy_d4(s3)
+local keyFrame = Instance.new("Frame")
+keyFrame.Size = UDim2.new(0,320,0,180)
+keyFrame.Position = UDim2.new(0.5,-160,0.5,-90)
+keyFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+keyFrame.Parent = keyGui
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,15)
 
--- Execução protegida
-local f,e=pcall(function()
-    local fn=ImXTL69Zwj_r3HkCGB9(s4)
-    if type(fn)=="function"then
-        fn()
-    end
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,0,0,40)
+title.BackgroundTransparency = 1
+title.Text = "🔐 SISTEMA DE KEY"
+title.TextColor3 = Color3.new(1,1,1)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 16
+title.Parent = keyFrame
+
+local keyBox = Instance.new("TextBox")
+keyBox.Size = UDim2.new(0.8,0,0,40)
+keyBox.Position = UDim2.new(0.1,0,0.4,0)
+keyBox.PlaceholderText = "Digite a Key"
+keyBox.Text = ""
+keyBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
+keyBox.TextColor3 = Color3.new(1,1,1)
+keyBox.Parent = keyFrame
+Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0,8)
+
+local verify = Instance.new("TextButton")
+verify.Size = UDim2.new(0.8,0,0,40)
+verify.Position = UDim2.new(0.1,0,0.7,0)
+verify.Text = "VERIFICAR"
+verify.BackgroundColor3 = Color3.fromRGB(0,170,255)
+verify.TextColor3 = Color3.new(1,1,1)
+verify.Font = Enum.Font.GothamBold
+verify.TextSize = 14
+verify.Parent = keyFrame
+Instance.new("UICorner", verify).CornerRadius = UDim.new(0,8)
+
+verify.MouseButton1Click:Connect(function()
+	if VALID_KEYS[keyBox.Text] then
+		authenticated = true
+		keyGui:Destroy()
+	else
+		keyBox.Text = "Key incorreta!"
+		task.wait(1)
+		keyBox.Text = ""
+	end
 end)
 
-if not f then
-    warn("[SECURITY] Tampering detected:",e)
+repeat task.wait() until authenticated
+
+
+-- AQUI COMEÇA SEU ESP
+
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Lighting = game:GetService("Lighting")
+
+local player = Players.LocalPlayer
+local debrisFolder = workspace:WaitForChild("Debris")
+
+
+-- CONFIG
+
+local MAX_DISTANCE = 400
+
+local espSettings = {
+Enemy = false,
+Item = false,
+Trap = false
+}
+
+local fullbrightEnabled = false
+local tracked = {}
+
+-- SALVAR LIGHT ORIGINAL
+local originalLighting = {
+Brightness = Lighting.Brightness,
+ClockTime = Lighting.ClockTime,
+FogStart = Lighting.FogStart,
+FogEnd = Lighting.FogEnd,
+GlobalShadows = Lighting.GlobalShadows,
+Ambient = Lighting.Ambient,
+OutdoorAmbient = Lighting.OutdoorAmbient
+}
+
+
+-- GUI
+
+local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local toggleMain = Instance.new("TextButton")
+toggleMain.Size = UDim2.new(0,140,0,45)
+toggleMain.Position = UDim2.new(0.75,0,0.05,0)
+toggleMain.BackgroundColor3 = Color3.fromRGB(20,20,20)
+toggleMain.Text = "⚡ ESP HUB"
+toggleMain.TextColor3 = Color3.new(1,1,1)
+toggleMain.Font = Enum.Font.GothamBold
+toggleMain.TextSize = 14
+toggleMain.Parent = gui
+Instance.new("UICorner", toggleMain).CornerRadius = UDim.new(0,12)
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0,230,0,250)
+mainFrame.Position = UDim2.new(0.7,0,0.13,0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+mainFrame.Visible = false
+mainFrame.Parent = gui
+Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0,16)
+
+local stroke = Instance.new("UIStroke", mainFrame)
+stroke.Color = Color3.fromRGB(0,170,255)
+stroke.Thickness = 1.5
+
+local layout = Instance.new("UIListLayout", mainFrame)
+layout.Padding = UDim.new(0,10)
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+
+
+-- DRAG
+
+local dragging, dragInput, dragStart, startPos
+
+local function enableDrag(frame)
+frame.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.Touch then
+dragging = true
+dragStart = input.Position
+startPos = frame.Position
+
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Lighting = game:GetService("Lighting")
+
+local player = Players.LocalPlayer
+
+
+-- 🔐 SISTEMA DE KEY (MULTI KEY)
+
+local VALID_KEYS = {
+	["dev1090"] = true,
+	["Gutovoador"] = true
+}
+
+local authenticated = false
+
+local keyGui = Instance.new("ScreenGui")
+keyGui.ResetOnSpawn = false
+keyGui.Parent = player:WaitForChild("PlayerGui")
+
+local keyFrame = Instance.new("Frame")
+keyFrame.Size = UDim2.new(0,320,0,180)
+keyFrame.Position = UDim2.new(0.5,-160,0.5,-90)
+keyFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+keyFrame.Parent = keyGui
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,15)
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1,0,0,40)
+title.BackgroundTransparency = 1
+title.Text = "🔐 SISTEMA DE KEY"
+title.TextColor3 = Color3.new(1,1,1)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 16
+title.Parent = keyFrame
+
+local keyBox = Instance.new("TextBox")
+keyBox.Size = UDim2.new(0.8,0,0,40)
+keyBox.Position = UDim2.new(0.1,0,0.4,0)
+keyBox.PlaceholderText = "Digite a Key"
+keyBox.Text = ""
+keyBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
+keyBox.TextColor3 = Color3.new(1,1,1)
+keyBox.Parent = keyFrame
+Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0,8)
+
+local verify = Instance.new("TextButton")
+verify.Size = UDim2.new(0.8,0,0,40)
+verify.Position = UDim2.new(0.1,0,0.7,0)
+verify.Text = "VERIFICAR"
+verify.BackgroundColor3 = Color3.fromRGB(0,170,255)
+verify.TextColor3 = Color3.new(1,1,1)
+verify.Font = Enum.Font.GothamBold
+verify.TextSize = 14
+verify.Parent = keyFrame
+Instance.new("UICorner", verify).CornerRadius = UDim.new(0,8)
+
+verify.MouseButton1Click:Connect(function()
+	if VALID_KEYS[keyBox.Text] then
+		authenticated = true
+		keyGui:Destroy()
+	else
+		keyBox.Text = "Key incorreta!"
+		task.wait(1)
+		keyBox.Text = ""
+	end
+end)
+
+repeat task.wait() until authenticated
+
+
+-- AQUI COMEÇA SEU ESP
+
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Lighting = game:GetService("Lighting")
+
+local player = Players.LocalPlayer
+local debrisFolder = workspace:WaitForChild("Debris")
+
+
+-- CONFIG
+
+local MAX_DISTANCE = 400
+
+local espSettings = {
+Enemy = false,
+Item = false,
+Trap = false
+}
+
+local fullbrightEnabled = false
+local tracked = {}
+
+-- SALVAR LIGHT ORIGINAL
+local originalLighting = {
+Brightness = Lighting.Brightness,
+ClockTime = Lighting.ClockTime,
+FogStart = Lighting.FogStart,
+FogEnd = Lighting.FogEnd,
+GlobalShadows = Lighting.GlobalShadows,
+Ambient = Lighting.Ambient,
+OutdoorAmbient = Lighting.OutdoorAmbient
+}
+
+
+-- GUI
+
+local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local toggleMain = Instance.new("TextButton")
+toggleMain.Size = UDim2.new(0,140,0,45)
+toggleMain.Position = UDim2.new(0.75,0,0.05,0)
+toggleMain.BackgroundColor3 = Color3.fromRGB(20,20,20)
+toggleMain.Text = "⚡ ESP HUB"
+toggleMain.TextColor3 = Color3.new(1,1,1)
+toggleMain.Font = Enum.Font.GothamBold
+toggleMain.TextSize = 14
+toggleMain.Parent = gui
+Instance.new("UICorner", toggleMain).CornerRadius = UDim.new(0,12)
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0,230,0,250)
+mainFrame.Position = UDim2.new(0.7,0,0.13,0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+mainFrame.Visible = false
+mainFrame.Parent = gui
+Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0,16)
+
+local stroke = Instance.new("UIStroke", mainFrame)
+stroke.Color = Color3.fromRGB(0,170,255)
+stroke.Thickness = 1.5
+
+local layout = Instance.new("UIListLayout", mainFrame)
+layout.Padding = UDim.new(0,10)
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+
+
+-- DRAG
+
+local dragging, dragInput, dragStart, startPos
+
+local function enableDrag(frame)
+frame.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.Touch then
+dragging = true
+dragStart = input.Position
+startPos = frame.Position
+input.Changed:Connect(function()
+if input.UserInputState == Enum.UserInputState.End then
+dragging = false
 end
+end)
+end
+end)
+
+frame.InputChanged:Connect(function(input)  
+	if input.UserInputType == Enum.UserInputType.Touch then  
+		dragInput = input  
+	end  
+end)  
+
+UserInputService.InputChanged:Connect(function(input)  
+	if input == dragInput and dragging then  
+		local delta = input.Position - dragStart  
+		frame.Position = UDim2.new(  
+			startPos.X.Scale,  
+			startPos.X.Offset + delta.X,  
+			startPos.Y.Scale,  
+			startPos.Y.Offset + delta.Y  
+		)  
+	end  
+end)
+
+end
+
+enableDrag(mainFrame)
+enableDrag(toggleMain)
+
+
+-- BOTÕES
+
+local function createToggle(name, typeName, color, callback)
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0,190,0,40)
+button.BackgroundColor3 = Color3.fromRGB(30,30,30)
+button.TextColor3 = Color3.new(1,1,1)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 13
+button.Text = name.." : OFF"
+button.Parent = mainFrame
+Instance.new("UICorner", button).CornerRadius = UDim.new(0,10)
+
+button.MouseButton1Click:Connect(function()  
+
+	if callback then  
+		fullbrightEnabled = not fullbrightEnabled  
+		callback(fullbrightEnabled)  
+		button.Text = name.." : "..(fullbrightEnabled and "ON" or "OFF")  
+		button.BackgroundColor3 = fullbrightEnabled and color or Color3.fromRGB(30,30,30)  
+	else  
+		espSettings[typeName] = not espSettings[typeName]  
+		button.Text = name.." : "..(espSettings[typeName] and "ON" or "OFF")  
+		button.BackgroundColor3 = espSettings[typeName] and color or Color3.fromRGB(30,30,30)  
+	end  
+
+end)
+
+end
+
+createToggle("👹 ESP INIMIGOS","Enemy",Color3.fromRGB(200,0,0))
+createToggle("📦 ESP ITENS","Item",Color3.fromRGB(0,120,255))
+createToggle("⚠ ESP ARMADILHAS","Trap",Color3.fromRGB(255,140,0))
+
+-- FULLBRIGHT + NOFOG
+createToggle("💡 FULLBRIGHT + NOFOG",nil,Color3.fromRGB(255,200,0),function(state)
+if state then
+Lighting.Brightness = 5
+Lighting.ClockTime = 14
+Lighting.GlobalShadows = false
+Lighting.Ambient = Color3.new(1,1,1)
+Lighting.OutdoorAmbient = Color3.new(1,1,1)
+Lighting.FogStart = 0
+Lighting.FogEnd = 1000000
+else
+for prop,value in pairs(originalLighting) do
+Lighting[prop] = value
+end
+end
+end)
+
+toggleMain.MouseButton1Click:Connect(function()
+mainFrame.Visible = not mainFrame.Visible
+end)
+
+
+-- REMOVER EFEITOS VISUAIS
+
+local function removeEffects()
+for _,v in pairs(Lighting:GetChildren()) do
+if v:IsA("Atmosphere")
+or v:IsA("BloomEffect")
+or v:IsA("ColorCorrectionEffect")
+or v:IsA("SunRaysEffect")
+or v:IsA("BlurEffect")
+or v:IsA("DepthOfFieldEffect") then
+v:Destroy()
+end
+end
+end
+
+-- FORÇA CONTÍNUA
+RunService.RenderStepped:Connect(function()
+if fullbrightEnabled then
+Lighting.FogStart = 0
+Lighting.FogEnd = 1000000
+removeEffects()
+end
+end)
+
+
+-- ESP
+
+local function getType(obj)
+if obj:FindFirstChild("Humanoid") then
+return "Enemy"
+end
+
+local name = string.lower(obj.Name)  
+if string.find(name,"trap") or string.find(name,"armadilha") or string.find(name,"spike") then  
+	return "Trap"  
+end  
+
+return "Item"
+
+end
+
+local function inDistance(obj)
+local char = player.Character
+if not char or not char:FindFirstChild("HumanoidRootPart") then
+return false
+end
+
+local root = char.HumanoidRootPart  
+local part = obj:FindFirstChild("HumanoidRootPart")  
+	or obj:FindFirstChild("Head")  
+	or obj:FindFirstChildWhichIsA("BasePart")  
+
+if not part then return false end  
+
+return (root.Position - part.Position).Magnitude <= MAX_DISTANCE
+
+end
+
+local function createESP(obj)
+if tracked[obj] then return end
+
+local typeName = getType(obj)  
+local color = typeName=="Enemy" and Color3.fromRGB(255,0,0)  
+	or typeName=="Item" and Color3.fromRGB(0,170,255)  
+	or Color3.fromRGB(255,140,0)  
+
+local highlight = Instance.new("Highlight")  
+highlight.FillColor = color  
+highlight.FillTransparency = 0.5  
+highlight.OutlineColor = Color3.new(1,1,1)  
+highlight.Parent = obj  
+
+local part = obj:FindFirstChild("Head") or obj:FindFirstChildWhichIsA("BasePart")  
+if not part then return end  
+
+local billboard = Instance.new("BillboardGui")  
+billboard.Size = UDim2.new(0,180,0,40)  
+billboard.StudsOffset = Vector3.new(0,3,0)  
+billboard.AlwaysOnTop = true  
+billboard.Parent = part  
+
+local text = Instance.new("TextLabel")  
+text.Size = UDim2.new(1,0,1,0)  
+text.BackgroundTransparency = 1  
+text.TextColor3 = color  
+text.Font = Enum.Font.GothamBold  
+text.TextSize = 13  
+text.TextStrokeTransparency = 0.5  
+text.TextStrokeColor3 = Color3.new(0,0,0)  
+text.Parent = billboard  
+
+if typeName=="Enemy" then  
+	local humanoid = obj:FindFirstChild("Humanoid")  
+	local function update()  
+		text.Text = obj.Name.." | HP: "..math.floor(humanoid.Health)  
+	end  
+	update()  
+	humanoid.HealthChanged:Connect(update)  
+else  
+	text.Text = obj.Name  
+end  
+
+tracked[obj] = {highlight,billboard}
+
+end
+
+local function removeESP(obj)
+if tracked[obj] then
+for _,v in pairs(tracked[obj]) do
+v:Destroy()
+end
+tracked[obj] = nil
+end
+end
+
+RunService.Heartbeat:Connect(function()
+for _,obj in pairs(debrisFolder:GetChildren()) do
+local typeName = getType(obj)
+if espSettings[typeName] and inDistance(obj) then
+createESP(obj)
+else
+removeESP(obj)
+end
+end
+end)input.Changed:Connect(function()
+if input.UserInputState == Enum.UserInputState.End then
+dragging = false
+end
+end)
+end
+end)
+
+frame.InputChanged:Connect(function(input)  
+	if input.UserInputType == Enum.UserInputType.Touch then  
+		dragInput = input  
+	end  
+end)  
+
+UserInputService.InputChanged:Connect(function(input)  
+	if input == dragInput and dragging then  
+		local delta = input.Position - dragStart  
+		frame.Position = UDim2.new(  
+			startPos.X.Scale,  
+			startPos.X.Offset + delta.X,  
+			startPos.Y.Scale,  
+			startPos.Y.Offset + delta.Y  
+		)  
+	end  
+end)
+
+end
+
+enableDrag(mainFrame)
+enableDrag(toggleMain)
+
+
+-- BOTÕES
+
+local function createToggle(name, typeName, color, callback)
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0,190,0,40)
+button.BackgroundColor3 = Color3.fromRGB(30,30,30)
+button.TextColor3 = Color3.new(1,1,1)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 13
+button.Text = name.." : OFF"
+button.Parent = mainFrame
+Instance.new("UICorner", button).CornerRadius = UDim.new(0,10)
+
+button.MouseButton1Click:Connect(function()  
+
+	if callback then  
+		fullbrightEnabled = not fullbrightEnabled  
+		callback(fullbrightEnabled)  
+		button.Text = name.." : "..(fullbrightEnabled and "ON" or "OFF")  
+		button.BackgroundColor3 = fullbrightEnabled and color or Color3.fromRGB(30,30,30)  
+	else  
+		espSettings[typeName] = not espSettings[typeName]  
+		button.Text = name.." : "..(espSettings[typeName] and "ON" or "OFF")  
+		button.BackgroundColor3 = espSettings[typeName] and color or Color3.fromRGB(30,30,30)  
+	end  
+
+end)
+
+end
+
+createToggle("👹 ESP INIMIGOS","Enemy",Color3.fromRGB(200,0,0))
+createToggle("📦 ESP ITENS","Item",Color3.fromRGB(0,120,255))
+createToggle("⚠ ESP ARMADILHAS","Trap",Color3.fromRGB(255,140,0))
+
+-- FULLBRIGHT + NOFOG
+createToggle("💡 FULLBRIGHT + NOFOG",nil,Color3.fromRGB(255,200,0),function(state)
+if state then
+Lighting.Brightness = 5
+Lighting.ClockTime = 14
+Lighting.GlobalShadows = false
+Lighting.Ambient = Color3.new(1,1,1)
+Lighting.OutdoorAmbient = Color3.new(1,1,1)
+Lighting.FogStart = 0
+Lighting.FogEnd = 1000000
+else
+for prop,value in pairs(originalLighting) do
+Lighting[prop] = value
+end
+end
+end)
+
+toggleMain.MouseButton1Click:Connect(function()
+mainFrame.Visible = not mainFrame.Visible
+end)
+
+
+-- REMOVER EFEITOS VISUAIS
+
+local function removeEffects()
+for _,v in pairs(Lighting:GetChildren()) do
+if v:IsA("Atmosphere")
+or v:IsA("BloomEffect")
+or v:IsA("ColorCorrectionEffect")
+or v:IsA("SunRaysEffect")
+or v:IsA("BlurEffect")
+or v:IsA("DepthOfFieldEffect") then
+v:Destroy()
+end
+end
+end
+
+-- FORÇA CONTÍNUA
+RunService.RenderStepped:Connect(function()
+if fullbrightEnabled then
