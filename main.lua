@@ -1,3 +1,11 @@
+--// SERVIÇOS
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Lighting = game:GetService("Lighting")
+
+local player = Players.LocalPlayer
+
 --============================
 -- 🔐 SISTEMA DE KEY (MULTI KEY)
 --============================
@@ -62,3 +70,196 @@ verify.MouseButton1Click:Connect(function()
 end)
 
 repeat task.wait() until authenticated
+
+--============================
+-- AQUI COMEÇA SEU ESP
+--============================
+
+local debrisFolder = workspace:WaitForChild("Debris")
+
+local MAX_DISTANCE = 400
+
+local espSettings = {
+	Enemy = false,
+	Item = false,
+	Trap = false
+}
+
+local fullbrightEnabled = false
+local tracked = {}
+
+local originalLighting = {
+	Brightness = Lighting.Brightness,
+	ClockTime = Lighting.ClockTime,
+	FogStart = Lighting.FogStart,
+	FogEnd = Lighting.FogEnd,
+	GlobalShadows = Lighting.GlobalShadows,
+	Ambient = Lighting.Ambient,
+	OutdoorAmbient = Lighting.OutdoorAmbient
+}
+
+--============================
+-- GUI HUB
+--============================
+
+local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local toggleMain = Instance.new("TextButton")
+toggleMain.Size = UDim2.new(0,140,0,45)
+toggleMain.Position = UDim2.new(0.75,0,0.05,0)
+toggleMain.BackgroundColor3 = Color3.fromRGB(20,20,20)
+toggleMain.Text = "⚡ ESP HUB"
+toggleMain.TextColor3 = Color3.new(1,1,1)
+toggleMain.Font = Enum.Font.GothamBold
+toggleMain.TextSize = 14
+toggleMain.Parent = gui
+Instance.new("UICorner", toggleMain).CornerRadius = UDim.new(0,12)
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0,230,0,250)
+mainFrame.Position = UDim2.new(0.7,0,0.13,0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+mainFrame.Visible = false
+mainFrame.Parent = gui
+Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0,16)
+
+local stroke = Instance.new("UIStroke", mainFrame)
+stroke.Color = Color3.fromRGB(0,170,255)
+stroke.Thickness = 1.5
+
+local layout = Instance.new("UIListLayout", mainFrame)
+layout.Padding = UDim.new(0,10)
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+
+toggleMain.MouseButton1Click:Connect(function()
+	mainFrame.Visible = not mainFrame.Visible
+end)
+
+--============================
+-- DRAG (MOBILE)
+--============================
+
+local dragging, dragInput, dragStart, startPos
+
+local function enableDrag(frame)
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - dragStart
+			frame.Position = UDim2.new(
+				startPos.X.Scale,
+				startPos.X.Offset + delta.X,
+				startPos.Y.Scale,
+				startPos.Y.Offset + delta.Y
+			)
+		end
+	end)
+end
+
+enableDrag(mainFrame)
+enableDrag(toggleMain)
+
+--============================
+-- BOTÕES
+--============================
+
+local function createToggle(name, typeName, color, callback)
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(0,190,0,40)
+	button.BackgroundColor3 = Color3.fromRGB(30,30,30)
+	button.TextColor3 = Color3.new(1,1,1)
+	button.Font = Enum.Font.GothamBold
+	button.TextSize = 13
+	button.Text = name.." : OFF"
+	button.Parent = mainFrame
+	Instance.new("UICorner", button).CornerRadius = UDim.new(0,10)
+
+	button.MouseButton1Click:Connect(function()
+		if callback then
+			fullbrightEnabled = not fullbrightEnabled
+			callback(fullbrightEnabled)
+			button.Text = name.." : "..(fullbrightEnabled and "ON" or "OFF")
+			button.BackgroundColor3 = fullbrightEnabled and color or Color3.fromRGB(30,30,30)
+		else
+			espSettings[typeName] = not espSettings[typeName]
+			button.Text = name.." : "..(espSettings[typeName] and "ON" or "OFF")
+			button.BackgroundColor3 = espSettings[typeName] and color or Color3.fromRGB(30,30,30)
+		end
+	end)
+end
+
+createToggle("👹 ESP INIMIGOS","Enemy",Color3.fromRGB(200,0,0))
+createToggle("📦 ESP ITENS","Item",Color3.fromRGB(0,120,255))
+createToggle("⚠ ESP ARMADILHAS","Trap",Color3.fromRGB(255,140,0))
+
+--============================
+-- ESP LOOP
+--============================
+
+local function getType(obj)
+	if obj:FindFirstChild("Humanoid") then
+		return "Enemy"
+	end
+
+	local name = string.lower(obj.Name)
+	if string.find(name,"trap") or string.find(name,"armadilha") or string.find(name,"spike") then
+		return "Trap"
+	end
+
+	return "Item"
+end
+
+local function inDistance(obj)
+	local char = player.Character
+	if not char or not char:FindFirstChild("HumanoidRootPart") then
+		return false
+	end
+
+	local root = char.HumanoidRootPart
+	local part = obj:FindFirstChildWhichIsA("BasePart")
+	if not part then return false end
+
+	return (root.Position - part.Position).Magnitude <= MAX_DISTANCE
+end
+
+RunService.Heartbeat:Connect(function()
+	for _,obj in pairs(debrisFolder:GetChildren()) do
+		local typeName = getType(obj)
+		if espSettings[typeName] and inDistance(obj) then
+			if not tracked[obj] then
+				local highlight = Instance.new("Highlight")
+				highlight.FillColor = typeName=="Enemy" and Color3.fromRGB(255,0,0)
+					or typeName=="Item" and Color3.fromRGB(0,170,255)
+					or Color3.fromRGB(255,140,0)
+				highlight.Parent = obj
+				tracked[obj] = highlight
+			end
+		else
+			if tracked[obj] then
+				tracked[obj]:Destroy()
+				tracked[obj] = nil
+			end
+		end
+	end
+end)
